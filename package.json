@@ -1,0 +1,12 @@
+{
+    "name": "litterara-framtidsagenter",
+    "version": "1.0.0",
+    "description": "WebSocket-server för multiplayer-läge i spelet",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "dependencies": {
+        "ws": "^8.0.0"
+    }
+}
