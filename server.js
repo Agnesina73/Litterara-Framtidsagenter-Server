@@ -33,7 +33,15 @@ server.on('connection', ws => {
             votes[data.choice] = (votes[data.choice] || 0) + 1;
             if (votes[data.choice] >= players.size) {
                 const winningChoice = Object.keys(votes).reduce((a, b) => votes[a] > votes[b] ? a : b);
-                broadcast({ type: "result", winningChoice });
+                broadcast({
+    type: "newDilemma",
+    dilemma: {
+        text: dilemman[currentDilemmaIndex].text,
+        book: dilemman[currentDilemmaIndex].book,
+        choices: dilemman[currentDilemmaIndex].choices.map(choice => ({ text: choice }))
+    }
+});
+
                 setTimeout(sendNewDilemma, 3000);
             }
         }
